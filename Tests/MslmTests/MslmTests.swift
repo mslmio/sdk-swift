@@ -134,7 +134,7 @@ final class MslmTests: XCTestCase {
     }
     func SendOTP() {
         let expectation = expectation(description: "Send OTP")
-        OTPService.default.send(phoneNumer: "+923047323665", templateSMS: "Your OTP is", tokenLength: 6, expireSecounds: 60) { result in
+        OTPService.default.send(phoneNumer: "", templateSMS: "Your OTP is", tokenLength: 6, expireSecounds: 60) { result in
             switch result{
             case .success(let response):
                 XCTAssertNotNil(response)
@@ -147,7 +147,7 @@ final class MslmTests: XCTestCase {
     }
     func VerifyOTP() {
         let expectation = expectation(description: "Verify OTP")
-        OTPService.default.verify(phone: "+923047323665", token: "348699") { result in
+        OTPService.default.verify(phone: "", token: "") { result in
             switch result{
             case .success(let response):
                 XCTAssertNotNil(response)
