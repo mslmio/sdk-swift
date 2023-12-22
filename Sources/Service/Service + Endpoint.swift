@@ -9,104 +9,111 @@ import Foundation
 
 extension Service.Router {
 
-    // MARK: - URLRequest Configuration
+	// MARK: Public
 
-    /// Constructs and returns a URLRequest based on the router type.
-    public var prepareURL: URLRequest {
-        // Step 1: Construct the base URL
-        var request = URLRequest(url: baseURL)
+	// MARK: - URLRequest Configuration
 
-        // Step 2: Configure common headers for the request
-        configureCommonHeaders(&request)
+	/// Constructs and returns a URLRequest based on the router type.
+	public var prepareURL: URLRequest {
+		// Step 1: Construct the base URL
+		var request = URLRequest(url: baseURL)
 
-        // Step 3: Configure URL parameters based on the router type
-        configureURLParameters(&request)
+		// Step 2: Configure common headers for the request
+		configureCommonHeaders(&request)
 
-        return request
-    }
+		// Step 3: Configure URL parameters based on the router type
+		configureURLParameters(&request)
 
-    // MARK: - Private Helper Functions
+		return request
+	}
 
-    /// Constructs the base URL for the request.
-    private var baseURL: URL {
-        guard let url = URL(string: Constant.SERVER_URL) else {
-            fatalError("Invalid base URL")
-        }
-        return url
-    }
+	// MARK: Private
 
-    /// Configures common headers for the request (e.g., user-agent, content-type).
-    private func configureCommonHeaders(_ request: inout URLRequest) {
-        request.addValue(Constant.USER_AGENT, forHTTPHeaderField: "user-agent")
-        request.addValue(Constant.CONTENT_TYPE, forHTTPHeaderField: "content-type")
-    }
+	// MARK: - Private Helper Functions
 
-    /// Configures URL parameters based on the router type.
-    private func configureURLParameters(_ request: inout URLRequest) {
-        switch self {
-        case .singleVerify(let email, let method):
-            configureSingleVerifyParameters(&request, email: email, method: method)
-        case .otpSend(let params, let method):
-            configureOTPSendParameters(&request, parameters: params, method: method)
-        case .otpVerify(let params, let method):
-            configureOTPVerifyParameters(&request, parameters: params, method: method)
-        }
-    }
+	/// Constructs the base URL for the request.
+	private var baseURL: URL {
+		guard let url = URL(string: Constant.SERVER_URL) else {
+			fatalError("Invalid base URL")
+		}
+		return url
+	}
 
-    /// Configures URL parameters for single email verification.
-    private func configureSingleVerifyParameters(_ request: inout URLRequest, email: String, method: HTTPMethod) {
-        // Construct the URL for single email verification
-        let url = baseURL.appendingPathComponent(Constant.SINGLE_VERIFY_ENDPOINT)
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        components?.queryItems = [URLQueryItem(name: "email", value: email), URLQueryItem(name: "apikey", value: Constant.API_KEY)]
+	/// Configures common headers for the request (e.g., user-agent, content-type).
+	private func configureCommonHeaders(_ request: inout URLRequest) {
+		request.addValue(Constant.USER_AGENT, forHTTPHeaderField: "user-agent")
+		request.addValue(Constant.CONTENT_TYPE, forHTTPHeaderField: "content-type")
+	}
 
-        guard let finalURL = components?.url else {
-            fatalError("Failed to construct URL for single email verification")
-        }
+	/// Configures URL parameters based on the router type.
+	private func configureURLParameters(_ request: inout URLRequest) {
+		switch self {
+		case .singleVerify(let email, let method):
+			configureSingleVerifyParameters(&request, email: email, method: method)
+		case .otpSend(let params, let method):
+			configureOTPSendParameters(&request, parameters: params, method: method)
+		case .otpVerify(let params, let method):
+			configureOTPVerifyParameters(&request, parameters: params, method: method)
+		}
+	}
 
-        request.url = finalURL
-        request.httpMethod = method.rawValue
-    }
+	/// Configures URL parameters for single email verification.
+	private func configureSingleVerifyParameters(_ request: inout URLRequest, email: String, method: HTTPMethod) {
+		// Construct the URL for single email verification
+		let url = baseURL.appendingPathComponent(Constant.SINGLE_VERIFY_ENDPOINT)
+		var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+		components?.queryItems = [
+			URLQueryItem(name: "email", value: email),
+			URLQueryItem(name: "apikey", value: Constant.API_KEY),
+		]
 
-    /// Configures URL parameters for OTP send request.
-    private func configureOTPSendParameters(_ request: inout URLRequest, parameters: [String: Any], method: HTTPMethod) {
-        // Construct the URL for OTP send request
-        let url = baseURL.appendingPathComponent(Constant.OTP_SEND_ENDPOINT)
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        components?.queryItems = [URLQueryItem(name: "apikey", value: Constant.API_KEY)]
+		guard let finalURL = components?.url else {
+			fatalError("Failed to construct URL for single email verification")
+		}
 
-        guard let finalURL = components?.url else {
-            fatalError("Failed to construct URL for single email verification")
-        }
+		request.url = finalURL
+		request.httpMethod = method.rawValue
+	}
 
-        request.url = finalURL
-        request.httpMethod = method.rawValue
+	/// Configures URL parameters for OTP send request.
+	private func configureOTPSendParameters(_ request: inout URLRequest, parameters: [String: Any], method: HTTPMethod) {
+		// Construct the URL for OTP send request
+		let url = baseURL.appendingPathComponent(Constant.OTP_SEND_ENDPOINT)
+		var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+		components?.queryItems = [URLQueryItem(name: "apikey", value: Constant.API_KEY)]
 
-        // Serialize parameters to JSON and set as HTTP body
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
-            return
-        }
-        request.httpBody = httpBody
-    }
+		guard let finalURL = components?.url else {
+			fatalError("Failed to construct URL for single email verification")
+		}
 
-    /// Configures URL parameters for OTP verification request.
-    private func configureOTPVerifyParameters(_ request: inout URLRequest, parameters: [String: Any], method: HTTPMethod) {
-        // Construct the URL for OTP verification request
-        let url = baseURL.appendingPathComponent(Constant.OTP_VERIFY_ENDPOINT)
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        components?.queryItems = [URLQueryItem(name: "apikey", value: Constant.API_KEY)]
+		request.url = finalURL
+		request.httpMethod = method.rawValue
 
-        guard let finalURL = components?.url else {
-            fatalError("Failed to construct URL for single email verification")
-        }
+		// Serialize parameters to JSON and set as HTTP body
+		guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
+			return
+		}
+		request.httpBody = httpBody
+	}
 
-        request.url = finalURL
-        request.httpMethod = method.rawValue
+	/// Configures URL parameters for OTP verification request.
+	private func configureOTPVerifyParameters(_ request: inout URLRequest, parameters: [String: Any], method: HTTPMethod) {
+		// Construct the URL for OTP verification request
+		let url = baseURL.appendingPathComponent(Constant.OTP_VERIFY_ENDPOINT)
+		var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+		components?.queryItems = [URLQueryItem(name: "apikey", value: Constant.API_KEY)]
 
-        // Serialize parameters to JSON and set as HTTP body
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
-            return
-        }
-        request.httpBody = httpBody
-    }
+		guard let finalURL = components?.url else {
+			fatalError("Failed to construct URL for single email verification")
+		}
+
+		request.url = finalURL
+		request.httpMethod = method.rawValue
+
+		// Serialize parameters to JSON and set as HTTP body
+		guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
+			return
+		}
+		request.httpBody = httpBody
+	}
 }

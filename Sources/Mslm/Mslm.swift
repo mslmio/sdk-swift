@@ -10,15 +10,20 @@ import Foundation
 /// A class representing the Mslm library, providing access to OTP services and email verification.
 open class Mslm {
 
-    /// The OTP (One-Time Password) service for handling OTP-related functionalities.
-    public let otp: OTPService
+	// MARK: Lifecycle
 
-    /// The SingleVerify service for performing single email verification.
-    public let emailVerify: SingleVerify
+	/// Initializes a new instance of the `Mslm` class.
+	public init(otp: OTPService = OTPService.default, emailVerify: SingleVerify = SingleVerify.default) {
+		self.otp = otp
+		self.emailVerify = emailVerify
+	}
 
-    /// Initializes a new instance of the `Mslm` class.
-    public init(otp: OTPService = OTPService.default, emailVerify: SingleVerify = SingleVerify.default) {
-        self.otp = otp
-        self.emailVerify = emailVerify
-    }
+	// MARK: Public
+
+	/// The OTP (One-Time Password) service for handling OTP-related functionalities.
+	public let otp: OTPService
+
+	/// The SingleVerify service for performing single email verification.
+	public let emailVerify: SingleVerify
+
 }
