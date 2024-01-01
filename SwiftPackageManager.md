@@ -15,7 +15,7 @@ Add a package by selecting `File` → `Add Packages…` in Xcode’s menu bar.
 
 ---
 
-Search for the Firebase Apple SDK using the repo's URL:
+Search for the Mslm SDK using the repo's URL:
 
 ```console
 https://github.com/mslmio/sdk-swift.git
@@ -46,7 +46,7 @@ Feel free to customize your Mslm installation based on your project requirements
 
 ---
 
-### Alternatively, add Firebase to a `Package.swift` manifest
+### Alternatively, add Mslm to a `Package.swift` manifest
 
 To integrate via a `Package.swift` manifest instead of Xcode, you can add
 Mslm to the dependencies array of your package:
@@ -70,7 +70,7 @@ array of that target:
 .target(
   name: "MyTargetName",
   dependencies: [
-    // The product(s) you want (e.g. FirebaseAuth).
+    // The product(s) you want (e.g. EmailVerify).
     .product(name: "OTP", package: "EmailVerify"),
   ]
 ),
