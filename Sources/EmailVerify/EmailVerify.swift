@@ -28,7 +28,7 @@ open class EmailVerify {
 	///   - completion: A closure to be called when the verification is completed.
 	///                 It provides a `Result` object containing either the verification response or an error.
 	public func singleVerify(_ email: String, completion: @escaping ((Result<EmailVerifyResp, Error>) -> Void)) {
-        networkManager.request(url: EmailVerify.Router.singleVerify(email: email, method: .post).prepareURL) { response in
+		networkManager.request(url: EmailVerify.Router.singleVerify(email: email, method: .post).prepareURL) { response in
 			switch response {
 			case .success(let data):
 				do {

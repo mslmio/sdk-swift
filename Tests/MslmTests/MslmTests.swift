@@ -1,6 +1,6 @@
 import XCTest
-@testable import Mslm
 @testable import EmailVerify
+@testable import Mslm
 @testable import OTP
 
 final class MslmTests: XCTestCase {
@@ -23,8 +23,8 @@ final class MslmTests: XCTestCase {
 				XCTAssertFalse(data.free ?? true)
 				XCTAssertTrue(data.role ?? false)
 				XCTAssertNotNil(data.mx)
-                XCTAssertEqual(data.mx?.count, 5)
-                XCTAssertEqual(data.mx?[0].host, "ASPMX.L.GOOGLE.COM.")
+				XCTAssertEqual(data.mx?.count, 5)
+				XCTAssertEqual(data.mx?[0].host, "ASPMX.L.GOOGLE.COM.")
 				XCTAssertEqual(data.mx?[0].pref, 1)
 				XCTAssertEqual(data.mx?[1].host, "ALT1.ASPMX.L.GOOGLE.COM.")
 				XCTAssertEqual(data.mx?[1].pref, 5)
@@ -96,7 +96,7 @@ final class MslmTests: XCTestCase {
 				XCTAssertTrue(data.hasMailbox ?? false)
 				XCTAssertTrue(data.acceptAll ?? false)
 				XCTAssertTrue(data.disposable ?? false)
-                XCTAssertTrue(data.free ?? false)
+				XCTAssertTrue(data.free ?? false)
 				XCTAssertFalse(data.role ?? true)
 				XCTAssertNotNil(data.mx)
 				XCTAssertEqual(data.mx?.count, 1)

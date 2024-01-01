@@ -7,24 +7,12 @@
 
 Swift API Client for OTP and Email Verification Services: A versatile Swift SDK designed for easy integration with OTP (One-Time Password) and Email Verification services. This SDK provides straightforward functions for sending and verifying one-time passwords via SMS, as well as validating email addresses for authenticity and deliverability.
 
-## Table of Contents
-
-- [Getting Started](#getting-started)
-  - [Installation](#installation)
-    - [Swift Package Manager](#swift-package-manager)
-    - [Authentication](#authentication)
-- [Usage](#usage)
-    - [Import the SDK](#import-the-SDK)
-    - [Initialize the SDK](#initialize-the-SDK)
-    - [OTP Usage](#otp-usage)
-    - [Email Verification Service Usage](#email-verification-service-usage)
-    - [Using Only OTP or Email Verification](#using-only-otp-or-email-verification)
-- [About Mslm](#about-mslm)
-
 ## Getting Started
+
 You'll need an Mslm API access token, which you can get by signing up at [https://mslm.io/signup](https://mslm.io/signup).
 
 ### Installation
+
 #### Swift Package Manager
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
@@ -36,7 +24,9 @@ dependencies: [
     .package(url: "https://github.com/mslmio/sdk-swift", .upToNextMajor(from: "0.1.0"))
 ]
 ```
+
 #### Authentication
+
 The Mslm Swift SDK can be authenticated with your Mslm API access token, which is passed with this key `MslmApiKey` in `info.plist` file. Your Mslm access token can be found in the account section of Mslm's website.
 
 ## Usage

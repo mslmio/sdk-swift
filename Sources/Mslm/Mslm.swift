@@ -5,9 +5,9 @@
 //  Created by mslm on 23/12/2023.
 //
 
+import EmailVerify
 import Foundation
 import OTP
-import EmailVerify
 
 /// A class representing the Mslm SDK, providing access to OTP  and email verification.
 open class Mslm {

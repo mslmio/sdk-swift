@@ -43,7 +43,7 @@ open class OTP {
 			"expire_seconds": expireSecounds,
 		] as [String: Any]
 
-            networkManager.request(url: OTP.Router.otpSend(parameters: params, method: .post).prepareURL) { result in
+		networkManager.request(url: OTP.Router.otpSend(parameters: params, method: .post).prepareURL) { result in
 			switch result {
 			case .success(let response):
 				completion(.success(response))
@@ -72,7 +72,7 @@ open class OTP {
 			"consume": consume,
 		] as [String: Any]
 
-            networkManager.request(url: OTP.Router.otpVerify(parameters: params, method: .post).prepareURL) { result in
+		networkManager.request(url: OTP.Router.otpVerify(parameters: params, method: .post).prepareURL) { result in
 			switch result {
 			case .success(let response):
 				completion(.success(response))
