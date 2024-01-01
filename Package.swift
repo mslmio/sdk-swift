@@ -18,22 +18,44 @@ let package = Package(
 			targets: ["EmailVerify"]),
 	],
 	targets: [
+
 		// Main SDK target
+
 		.target(
 			name: "Mslm",
-			dependencies: ["OTP", "EmailVerify"]),
+			dependencies: ["OTP", "EmailVerify"],
+            path: "Mslm/Sources"),
+        .testTarget(
+            name: "MslmTests",
+            dependencies: ["Mslm"],
+            path: "Mslm/Tests"),
+
 		// OTP SDK target
+
 		.target(
 			name: "OTP",
-			dependencies: ["MslmNetworkManager"]),
+			dependencies: ["MslmNetworkManager"],
+            path: "OTP/Sources"),
+        .testTarget(
+            name: "OTPTests",
+            dependencies: ["OTP"],
+            path: "OTP/Tests"),
+
 		// EmailVerify SDK target
+
 		.target(
 			name: "EmailVerify",
-			dependencies: ["MslmNetworkManager"]),
+			dependencies: ["MslmNetworkManager"],
+            path: "EmailVerify/Sources"),
+        .testTarget(
+            name: "EmailVerifyTests",
+            dependencies: ["EmailVerify"],
+            path: "EmailVerify/Tests"),
+
+        // MslmNetworkManager
+
 		.target(
 			name: "MslmNetworkManager",
-			dependencies: []),
-		.testTarget(
-			name: "MslmTests",
-			dependencies: ["Mslm"]),
+			dependencies: [],
+            path: "MslmNetworkManager"),
 	])
