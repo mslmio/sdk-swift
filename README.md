@@ -11,21 +11,18 @@ Swift API Client for OTP and Email Verification Services: A versatile Swift SDK 
 
 You'll need an Mslm API access token, which you can get by signing up at [https://mslm.io/signup](https://mslm.io/signup).
 
-### Installation
+## Installation
 
-#### Swift Package Manager
+### Swift Package Manager
 
-The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
+Instructions for [Swift Package Manager](https://swift.org/package-manager/) support can be found in the [SwiftPackageManager.md](SwiftPackageManager.md) Markdown file.
 
-Once you have your Swift package set up, adding mslm as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+### Installing from GitHub
 
-```swift
-dependencies: [
-    .package(url: "https://github.com/mslmio/sdk-swift", .upToNextMajor(from: "0.1.0"))
-]
-```
+These instructions can be used to access the Mslm repo at other branches,
+tags, or commits.
 
-#### Authentication
+### Authentication
 
 The Mslm Swift SDK can be authenticated with your Mslm API access token, which is passed with this key `MslmApiKey` in `info.plist` file. Your Mslm access token can be found in the account section of Mslm's website.
 
