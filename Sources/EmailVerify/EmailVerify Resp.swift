@@ -1,5 +1,5 @@
 //
-//  SingleVerifyResp.swift
+//  EmailVerifyResp.swift
 //
 //
 //  Created by mslm on 22/12/2023.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-// MARK: - SingleVerifyResp
+// MARK: - EmailVerifyResp
 
 /// A struct representing the response of a single email verification API request.
-public struct SingleVerifyResp: Codable {
+public struct EmailVerifyResp: Codable {
 
 	// MARK: Lifecycle
 
-	/// Initializes a `SingleVerifyResp` instance with the provided values.
+	/// Initializes a `EmailVerifyResp` instance with the provided values.
 	///
 	/// - Parameters:
 	///   - email: The email address.
@@ -59,40 +59,40 @@ public struct SingleVerifyResp: Codable {
 	// MARK: Public
 
 	/// The email address that was verified.
-	public let email: String
+	public let email: String?
 
 	/// The username associated with the email address.
-	public let username: String
+	public let username: String?
 
 	/// The domain of the email address.
-	public let domain: String
+	public let domain: String?
 
 	/// Indicates if the email address is malformed.
-	public let malformed: Bool
+	public let malformed: Bool?
 
 	/// A suggestion for a corrected email address.
-	public let suggestion: String
+	public let suggestion: String?
 
 	/// The verification status of the email address.
-	public let status: String
+	public let status: String?
 
 	/// Indicates if the email address has a mailbox.
-	public let hasMailbox: Bool
+	public let hasMailbox: Bool?
 
 	/// Indicates if the email address accepts all emails.
-	public let acceptAll: Bool
+	public let acceptAll: Bool?
 
 	/// Indicates if the email address is disposable.
-	public let disposable: Bool
+	public let disposable: Bool?
 
 	/// Indicates if the email address is free.
-	public let free: Bool
+	public let free: Bool?
 
 	/// Indicates if the email address is a role-based address.
-	public let role: Bool
+	public let role: Bool?
 
 	/// An array of mail exchange (MX) records associated with the email domain.
-	public let mx: [MX]
+	public let mx: [MX]?
 
 	// MARK: Internal
 
@@ -134,10 +134,10 @@ public struct MX: Codable {
 	// MARK: Public
 
 	/// The host associated with the MX record.
-	public let host: String
+	public let host: String?
 
 	/// The preference value of the MX record.
-	public let pref: Int
+	public let pref: Int?
 
 	// MARK: Internal
 

@@ -1,5 +1,5 @@
 //
-//  Service.swift
+//  MslmNetworkManager.swift
 //
 //
 //  Created by mslm on 22/12/2023.
@@ -7,20 +7,20 @@
 
 import Foundation
 
-// MARK: - Service
+// MARK: - MslmNetworkManager
 
 /// A class that provides networking services.
-open class Service {
+open class MslmNetworkManager {
 
 	// MARK: Lifecycle
 
-	/// Initializes a new instance of the `Service` class.
+	/// Initializes a new instance of the `MslmNetworkManager` class.
 	public init() { }
 
 	// MARK: Public
 
-	/// The default instance of the `Service` class.
-	public static let `default` = Service()
+	/// The default instance of the `MslmNetworkManager` class.
+	public static let `default` = MslmNetworkManager()
 
 	/// Performs a network request with the given URL request.
 	///

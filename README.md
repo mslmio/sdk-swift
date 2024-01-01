@@ -1,14 +1,11 @@
-# [<img src="https://avatars.githubusercontent.com/u/50307970?s=200&v=4" alt="Mslm" width="40"/>](https://mslm.io/) Official Swift client library for Mslm API
+# [<img src="https://avatars.githubusercontent.com/u/50307970?s=200&v=4" alt="Mslm" width="40"/>](https://mslm.io/) Official Swift client SDK for Mslm API
 <p align="center">
 <a href="https://github.com/mslmio/sdk-swift"><img src="https://img.shields.io/badge/build-passing-%231CB735"></a>
 <a href="https://github.com/mslmio/sdk-swift"><img src="https://img.shields.io/badge/Swift-Doc-DE5C43.svg?logo=swift"></a>
 <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat"></a>
 </p>
 
-Swift API Client for OTP and Email Verification Services: A versatile Swift library designed for easy integration with OTP (One-Time Password) and Email Verification services. This library provides straightforward functions for sending and verifying one-time passwords via SMS, as well as validating email addresses for authenticity and deliverability.
-
-## Overview
-
+Swift API Client for OTP and Email Verification Services: A versatile Swift SDK designed for easy integration with OTP (One-Time Password) and Email Verification services. This SDK provides straightforward functions for sending and verifying one-time passwords via SMS, as well as validating email addresses for authenticity and deliverability.
 
 ## Table of Contents
 
@@ -17,9 +14,9 @@ Swift API Client for OTP and Email Verification Services: A versatile Swift libr
     - [Swift Package Manager](#swift-package-manager)
     - [Authentication](#authentication)
 - [Usage](#usage)
-    - [Import the Library](#import-the-library)
-    - [Initialize the Library](#initialize-the-library)
-    - [OTP Service Usage](#otp-service-usage)
+    - [Import the SDK](#import-the-SDK)
+    - [Initialize the SDK](#initialize-the-SDK)
+    - [OTP Usage](#otp-usage)
     - [Email Verification Service Usage](#email-verification-service-usage)
     - [Using Only OTP or Email Verification](#using-only-otp-or-email-verification)
 - [About Mslm](#about-mslm)
@@ -40,13 +37,13 @@ dependencies: [
 ]
 ```
 #### Authentication
-The Mslm Swift library can be authenticated with your Mslm API access token, which is passed with this key `MslmApiKey` in `info.plist` file. Your Mslm access token can be found in the account section of Mslm's website.
+The Mslm Swift SDK can be authenticated with your Mslm API access token, which is passed with this key `MslmApiKey` in `info.plist` file. Your Mslm access token can be found in the account section of Mslm's website.
 
 ## Usage
 
-This section provides a guide on how to use the Swift API Client for OTP and Email Verification Services in your project.
+Let's go through how to start using the Mslm Swift SDK with sample code.
 
-### 1. Import the Library
+### 1. Import the SDK
 
 In your Swift file, import the library at the beginning of the file:
 
@@ -54,7 +51,7 @@ In your Swift file, import the library at the beginning of the file:
 import Mslm
 ```
 
-### 2. Initialize the Library
+### 2. Initialize the SDK
 
 Create an instance of the `Mslm` class to access the OTP and Email Verification services:
 
@@ -62,7 +59,7 @@ Create an instance of the `Mslm` class to access the OTP and Email Verification 
 let mslm = Mslm()
 ```
 
-### 3. OTP Service Usage
+### 3. OTP Usage
 
 Sending OTP:
 
@@ -108,7 +105,7 @@ mslm.otp.verify(phone: "+123456789", token: "123456") { result in
 Single Email Verification:.
 
 ```swift
-mslm.emailVerify.singleVarify("user@example.com") { result in
+mslm.singleVerify.singleVerify("user@example.com") { result in
     switch result {
     case .success(let data):
         // Handle successful email verification response
@@ -127,11 +124,11 @@ If you only intend to use either the OTP or Email Verification service, you can 
 OTP Service Only:
 
 ```swift
-let otpService = OTPService.default
-// Now you can use otpService to send and verify OTPs
+let otp = OTP.default
+// Now you can use otp to send and verify OTPs
 
 // Example function for sending OTP
-otpService.send(phoneNumer: "+123456789", templateSMS: "Your OTP is", tokenLength: 6, expireSeconds: 60) { result in
+otp.send(phoneNumer: "+123456789", templateSMS: "Your OTP is", tokenLength: 6, expireSeconds: 60) { result in
         switch result {
         case .success(let response):
             // Handle successful OTP sending response
@@ -146,11 +143,11 @@ otpService.send(phoneNumer: "+123456789", templateSMS: "Your OTP is", tokenLengt
 Email Service Only:
 
 ```swift
-let emailVerifyService = SingleVerify.default
-// Now you can use emailVerifyService for single email verification
+let emailVerify = EmailVerify.default
+// Now you can use emailVerify for single email verification
 
 // Example function for email verification
-emailVerifyService.singleVarify("user@example.com") { result in
+emailVerify.singleVerify("user@example.com") { result in
         switch result {
         case .success(let data):
             // Handle successful email verification response
@@ -167,4 +164,3 @@ emailVerifyService.singleVarify("user@example.com") { result in
 Mslm focuses on producing world-class business solutions. It’s the bread-and-butter of our business to prioritize quality on everything we touch. Excellence is a core value that defines our culture from top to bottom.
 
 [![image](https://avatars.githubusercontent.com/u/50307970?s=200&v=4)](https://mslm.io/)
-

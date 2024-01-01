@@ -1,24 +1,25 @@
 //
-//  OTPService.swift
+//  OTP.swift
 //
 //
 //  Created by mslm on 23/12/2023.
 //
 
 import Foundation
+import MslmNetworkManager
 
 /// A class for handling OTP (One-Time Password) related services.
-open class OTPService {
+open class OTP {
 
 	// MARK: Lifecycle
 
-	/// Initializes a new instance of the `OTPService` class.
+	/// Initializes a new instance of the `OTP` class.
 	public init() { }
 
 	// MARK: Public
 
-	/// The default instance of the `OTPService` class.
-	public static let `default` = OTPService()
+	/// The default instance of the `OTP` class.
+	public static let `default` = OTP()
 
 	/// Sends an OTP to the specified phone number.
 	///
@@ -42,7 +43,7 @@ open class OTPService {
 			"expire_seconds": expireSecounds,
 		] as [String: Any]
 
-		service.request(url: Service.Router.otpSend(parameters: params, method: .post).prepareURL) { result in
+            networkManager.request(url: OTP.Router.otpSend(parameters: params, method: .post).prepareURL) { result in
 			switch result {
 			case .success(let response):
 				completion(.success(response))
@@ -71,7 +72,7 @@ open class OTPService {
 			"consume": consume,
 		] as [String: Any]
 
-		service.request(url: Service.Router.otpVerify(parameters: params, method: .post).prepareURL) { result in
+            networkManager.request(url: OTP.Router.otpVerify(parameters: params, method: .post).prepareURL) { result in
 			switch result {
 			case .success(let response):
 				completion(.success(response))
@@ -84,6 +85,6 @@ open class OTPService {
 	// MARK: Private
 
 	/// The underlying service responsible for handling network requests.
-	private let service = Service.default
+	private let networkManager = MslmNetworkManager.default
 
 }
