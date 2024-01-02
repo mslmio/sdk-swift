@@ -24,23 +24,23 @@ open class OTP {
 	/// Sends an OTP to the specified phone number.
 	///
 	/// - Parameters:
-	///   - phoneNumer: The phone number to which the OTP will be sent.
+	///   - phoneNumber: The phone number to which the OTP will be sent.
 	///   - templateSMS: The template for the SMS containing the OTP.
 	///   - tokenLength: The length of the OTP token.
-	///   - expireSecounds: The expiration time of the OTP in seconds.
+	///   - expireSeconds: The expiration time of the OTP in seconds.
 	///   - completion: A closure to be called when the request is completed.
 	///                 It provides a `Result` object containing either the response data or an error.
 	public func send(
-		phoneNumer: String,
+		phoneNumber: String,
 		templateSMS: String,
 		tokenLength: Int,
-		expireSecounds: Int,
+		expireSeconds: Int,
 		completion: @escaping ((Result<Data?, Error>) -> Void)) {
 		let params = [
-			"phone": phoneNumer,
+			"phone": phoneNumber,
 			"tmpl_sms": templateSMS,
 			"token_len": tokenLength,
-			"expire_seconds": expireSecounds,
+			"expire_seconds": expireSeconds,
 		] as [String: Any]
 
 		networkManager.request(url: OTP.Router.otpSend(parameters: params, method: .post).prepareURL) { result in

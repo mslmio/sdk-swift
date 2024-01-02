@@ -5,11 +5,12 @@
 <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat"></a>
 </p>
 
-Swift API Client for OTP and Email Verification Services: A versatile Swift SDK designed for easy integration with OTP (One-Time Password) and Email Verification services. This SDK provides straightforward functions for sending and verifying one-time passwords via SMS, as well as validating email addresses for authenticity and deliverability.
+The official Go SDK for Mslm APIs.
 
-## Getting Started
+## Requirements
 
-You'll need an Mslm API access token, which you can get by signing up at [https://mslm.io/signup](https://mslm.io/signup).
+- Xcode 14.1 (or later)
+- Swift 5.2 (or later)
 
 ## Installation
 
@@ -39,7 +40,7 @@ import Mslm
 
 ### 2. Initialize the SDK
 
-Create an instance of the `Mslm` class to access the OTP and Email Verification services:
+Create an instance of the `Mslm` class to use the entire Mslm SDK:
 
 ```swift
 let mslm = Mslm()
@@ -51,11 +52,11 @@ Sending OTP:
 
 ```swift
     /// - Parameters:
-    ///   - phoneNumer: The phone number to which the OTP will be sent.
+    ///   - phoneNumber: The phone number to which the OTP will be sent.
     ///   - templateSMS: The template for the SMS containing the OTP.
     ///   - tokenLength: The length of the OTP token.
-    ///   - expireSecounds: The expiration time of the OTP in seconds.
-mslm.otp.send(phoneNumer: "+123456789", templateSMS: "Your OTP is", tokenLength: 6, expireSeconds: 60) { result in
+    ///   - expireSeconds: The expiration time of the OTP in seconds.
+mslm.otp.send(phoneNumber: "+123456789", templateSMS: "Your OTP is", tokenLength: 6, expireSeconds: 60) { result in
     switch result {
     case .success(let response):
         // Handle successful OTP sending response
@@ -86,12 +87,10 @@ mslm.otp.verify(phone: "+123456789", token: "123456") { result in
 }
 ```
 
-### 4. Email Verification Service Usage
-
-Single Email Verification:.
+### 4. Email Verification  
 
 ```swift
-mslm.singleVerify.singleVerify("user@example.com") { result in
+mslm.emailVerify.singleVerify("user@example.com") { result in
     switch result {
     case .success(let data):
         // Handle successful email verification response
@@ -105,20 +104,25 @@ mslm.singleVerify.singleVerify("user@example.com") { result in
 
 ### 5. Using Only OTP or Email Verification
 
-If you only intend to use either the OTP or Email Verification service, you can directly access the respective service instance:
+Selecting the Mslm package installs the full suite of Mslm products. If you only need specific functionalities (e.g., OTP or EmailVerify), you can choose individual products to minimize dependencies.
 
-OTP Service Only:
+#### OTP:
+
+1. Import the OTP in your swift file.
 
 ```swift
-let otp = OTP.default
-// Now you can use otp to send and verify OTPs
+import OTP
+```
 
+2. Make a call to the OTP
+
+```swift
 // Example function for sending OTP
-otp.send(phoneNumer: "+123456789", templateSMS: "Your OTP is", tokenLength: 6, expireSeconds: 60) { result in
+OTP.default.send(phoneNumber: "+123456789", templateSMS: "Your OTP is", tokenLength: 6, expireSeconds: 60) { result in
         switch result {
         case .success(let response):
             // Handle successful OTP sending response
-            print("OTP Sent Successfully!")
+            print("OTP sent successfully!")
         case .failure(let error):
             // Handle error
             print("Error sending OTP: \(error.localizedDescription)")
@@ -126,18 +130,23 @@ otp.send(phoneNumer: "+123456789", templateSMS: "Your OTP is", tokenLength: 6, e
 }
 ```
 
-Email Service Only:
+#### Email:
+
+1. Import the EmailVerify in your swift file.
 
 ```swift
-let emailVerify = EmailVerify.default
-// Now you can use emailVerify for single email verification
+import EmailVerify
+```
 
+2. Make a call to the EmailVerify
+
+```swift
 // Example function for email verification
-emailVerify.singleVerify("user@example.com") { result in
+EmailVerify.default.singleVerify("user@example.com") { result in
         switch result {
         case .success(let data):
             // Handle successful email verification response
-            print("Email Verified Successfully!")
+            print("Email verified successfully!")
         case .failure(let error):
             // Handle error
             print("Error verifying email: \(error.localizedDescription)")

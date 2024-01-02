@@ -63,19 +63,6 @@ dependencies: [
 ],
 ```
 
-Then, in any target that depends on a Mslm product, add it to the `dependencies`
-array of that target:
-
-```swift
-.target(
-  name: "MyTargetName",
-  dependencies: [
-    // The product(s) you want (e.g. EmailVerify).
-    .product(name: "OTP", package: "EmailVerify"),
-  ]
-),
-```
-
 ## Questions and Issues
 
 Please provide any feedback via a [GitHub Issue](https://github.com/mslmio/sdk-swift/issues/new).

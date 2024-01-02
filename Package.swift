@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
 	name: "Mslm",
-    platforms: [.iOS(.v12), .macCatalyst(.v13), .macOS(.v10_13), .tvOS(.v12), .watchOS(.v7)],
+	platforms: [.iOS(.v12), .macCatalyst(.v13), .macOS(.v10_13), .tvOS(.v12), .watchOS(.v7)],
 	products: [
 		// Products define the executables and libraries a package produces, making them visible to other packages.
 		.library(
@@ -25,38 +25,38 @@ let package = Package(
 		.target(
 			name: "Mslm",
 			dependencies: ["OTP", "EmailVerify"],
-            path: "Mslm/Sources"),
-        .testTarget(
-            name: "MslmTests",
-            dependencies: ["Mslm"],
-            path: "Mslm/Tests"),
+			path: "Mslm/Sources"),
+		.testTarget(
+			name: "MslmTests",
+			dependencies: ["Mslm"],
+			path: "Mslm/Tests"),
 
 		// OTP SDK target
 
 		.target(
 			name: "OTP",
 			dependencies: ["MslmNetworkManager"],
-            path: "OTP/Sources"),
-        .testTarget(
-            name: "OTPTests",
-            dependencies: ["OTP"],
-            path: "OTP/Tests"),
+			path: "OTP/Sources"),
+		.testTarget(
+			name: "OTPTests",
+			dependencies: ["OTP"],
+			path: "OTP/Tests"),
 
 		// EmailVerify SDK target
 
 		.target(
 			name: "EmailVerify",
 			dependencies: ["MslmNetworkManager"],
-            path: "EmailVerify/Sources"),
-        .testTarget(
-            name: "EmailVerifyTests",
-            dependencies: ["EmailVerify"],
-            path: "EmailVerify/Tests"),
+			path: "EmailVerify/Sources"),
+		.testTarget(
+			name: "EmailVerifyTests",
+			dependencies: ["EmailVerify"],
+			path: "EmailVerify/Tests"),
 
-        // MslmNetworkManager
+		// MslmNetworkManager
 
 		.target(
 			name: "MslmNetworkManager",
 			dependencies: [],
-            path: "MslmNetworkManager"),
+			path: "MslmNetworkManager"),
 	])
