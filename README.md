@@ -13,16 +13,15 @@ You'll need an Mslm API access token, which you can get by signing up at [https:
 
 ## Installation
 
+See below for details about the installation method. Where
+available, it's recommended to install any libraries with a `Swift` suffix to get the
+best experience when writing your app in Swift.
+
 ### Swift Package Manager
 
 Instructions for [Swift Package Manager](https://swift.org/package-manager/) support can be found in the [SwiftPackageManager.md](SwiftPackageManager.md) Markdown file.
 
-### Installing from GitHub
-
-These instructions can be used to access the Mslm repo at other branches,
-tags, or commits.
-
-### Authentication
+## Authentication
 
 The Mslm Swift SDK can be authenticated with your Mslm API access token, which is passed with this key `MslmApiKey` in `info.plist` file. Your Mslm access token can be found in the account section of Mslm's website.
 
