@@ -5,7 +5,7 @@
 <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat"></a>
 </p>
 
-The official Go SDK for Mslm APIs.
+The official Swift SDK for Mslm APIs.
 
 ## Requirements
 
