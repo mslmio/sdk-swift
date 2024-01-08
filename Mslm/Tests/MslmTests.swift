@@ -28,9 +28,9 @@ final class MslmTests: XCTestCase {
 				XCTAssertEqual(data.mx?[1].pref, 5)
 				XCTAssertEqual(data.mx?[2].host, "ALT2.ASPMX.L.GOOGLE.COM.")
 				XCTAssertEqual(data.mx?[2].pref, 5)
-				XCTAssertEqual(data.mx?[3].host, "ALT3.ASPMX.L.GOOGLE.COM.")
+				XCTAssertEqual(data.mx?[3].host, "ALT4.ASPMX.L.GOOGLE.COM.")
 				XCTAssertEqual(data.mx?[3].pref, 10)
-				XCTAssertEqual(data.mx?[4].host, "ALT4.ASPMX.L.GOOGLE.COM.")
+				XCTAssertEqual(data.mx?[4].host, "ALT3.ASPMX.L.GOOGLE.COM.")
 				XCTAssertEqual(data.mx?[4].pref, 10)
 			case .failure(let err):
 				XCTFail(err.localizedDescription)
