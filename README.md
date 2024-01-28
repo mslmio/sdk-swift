@@ -30,7 +30,7 @@ The Mslm Swift SDK can be authenticated with your Mslm API access token, which i
 
 Let's go through how to start using the Mslm Swift SDK with sample code.
 
-### 1. Import the SDK
+### Import the SDK
 
 In your Swift file, import the library at the beginning of the file:
 
@@ -38,7 +38,7 @@ In your Swift file, import the library at the beginning of the file:
 import Mslm
 ```
 
-### 2. Initialize the SDK
+### Initialize the SDK
 
 Create an instance of the `Mslm` class to use the entire Mslm SDK:
 
@@ -46,7 +46,7 @@ Create an instance of the `Mslm` class to use the entire Mslm SDK:
 let mslm = Mslm()
 ```
 
-### 3. OTP Usage
+### Using OTP
 
 Sending OTP:
 
@@ -87,7 +87,7 @@ mslm.otp.verify(phone: "+123456789", token: "123456") { result in
 }
 ```
 
-### 4. Email Verification  
+### Using Email Verify
 
 ```swift
 mslm.emailVerify.singleVerify("user@example.com") { result in
@@ -102,13 +102,13 @@ mslm.emailVerify.singleVerify("user@example.com") { result in
 }
 ```
 
-### 5. Using Only OTP or Email Verification
+### Using Individual Clients
 
 Selecting the Mslm package installs the full suite of Mslm products. If you only need specific functionalities (e.g., OTP or EmailVerify), you can choose individual products to minimize dependencies.
 
-#### OTP:
+#### OTP
 
-1. Import the OTP in your swift file.
+1. Import `OTP` in your swift file.
 
 ```swift
 import OTP
@@ -130,9 +130,9 @@ OTP.default.send(phoneNumber: "+123456789", templateSMS: "Your OTP is", tokenLen
 }
 ```
 
-#### Email:
+#### Email Verify
 
-1. Import the EmailVerify in your swift file.
+1. Import `EmailVerify` in your swift file.
 
 ```swift
 import EmailVerify
