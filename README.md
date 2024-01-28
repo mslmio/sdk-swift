@@ -51,11 +51,11 @@ let mslm = Mslm()
 Sending OTP:
 
 ```swift
-    /// - Parameters:
-    ///   - phoneNumber: The phone number to which the OTP will be sent.
-    ///   - templateSMS: The template for the SMS containing the OTP.
-    ///   - tokenLength: The length of the OTP token.
-    ///   - expireSeconds: The expiration time of the OTP in seconds.
+// - Parameters:
+//   - phoneNumber: The phone number to which the OTP will be sent.
+//   - templateSMS: The template for the SMS containing the OTP.
+//   - tokenLength: The length of the OTP token.
+//   - expireSeconds: The expiration time of the OTP in seconds.
 mslm.otp.send(phoneNumber: "+123456789", templateSMS: "Your OTP is", tokenLength: 6, expireSeconds: 60) { result in
     switch result {
     case .success(let response):
@@ -71,10 +71,10 @@ mslm.otp.send(phoneNumber: "+123456789", templateSMS: "Your OTP is", tokenLength
 Verifying OTP:
 
 ```swift
-    /// - Parameters:
-    ///   - phone: The phone number to which the OTP was sent.
-    ///   - token: The OTP token to be verified.
-    ///   - consume: A flag indicating whether to consume the token after verification (default is `true`).
+// - Parameters:
+//   - phone: The phone number to which the OTP was sent.
+//   - token: The OTP token to be verified.
+//   - consume: A flag indicating whether to consume the token after verification (default is `true`).
 mslm.otp.verify(phone: "+123456789", token: "123456") { result in
     switch result {
     case .success(let response):
