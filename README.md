@@ -17,17 +17,15 @@ See below for details about the installation method. Where
 available, it's recommended to install any libraries with a `Swift` suffix to get the
 best experience when writing your app in Swift.
 
-### Swift Package Manager
-
 Instructions for [Swift Package Manager](https://swift.org/package-manager/) support can be found in the [SwiftPackageManager.md](SwiftPackageManager.md) Markdown file.
-
-## Authentication
-
-The Mslm Swift SDK can be authenticated with your Mslm API access token, which is passed with this key `MslmApiKey` in `info.plist` file. Your Mslm access token can be found in the account section of Mslm's website.
 
 ## Usage
 
 Let's go through how to start using the Mslm Swift SDK with sample code.
+
+### Authentication
+
+The Mslm Swift SDK can be authenticated with your Mslm API access token, which is passed with this key `MslmApiKey` in `info.plist` file. See [Getting an API Key](https://mslm.io/docs/api/authentication/getting-an-api-key) for setting that up.
 
 ### Import the SDK
 
