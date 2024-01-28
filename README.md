@@ -1,9 +1,8 @@
 # Mslm Swift SDK
-<p align="center">
+
 <a href="https://github.com/mslmio/sdk-swift"><img src="https://img.shields.io/badge/build-passing-%231CB735"></a>
 <a href="https://github.com/mslmio/sdk-swift"><img src="https://img.shields.io/badge/Swift-Doc-DE5C43.svg?logo=swift"></a>
 <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat"></a>
-</p>
 
 The official Swift SDK for Mslm APIs.
 
