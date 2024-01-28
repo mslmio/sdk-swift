@@ -1,4 +1,4 @@
-# [<img src="https://avatars.githubusercontent.com/u/50307970?s=200&v=4" alt="Mslm" width="40"/>](https://mslm.io/) Mslm Swift SDK
+# Mslm Swift SDK
 <p align="center">
 <a href="https://github.com/mslmio/sdk-swift"><img src="https://img.shields.io/badge/build-passing-%231CB735"></a>
 <a href="https://github.com/mslmio/sdk-swift"><img src="https://img.shields.io/badge/Swift-Doc-DE5C43.svg?logo=swift"></a>
