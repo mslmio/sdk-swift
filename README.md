@@ -11,6 +11,12 @@ The official Swift SDK for Mslm APIs.
 - Xcode 14.1 (or later)
 - Swift 5.2 (or later)
 
+## Authentication
+
+Mslm's APIs require an API key. If you don't have one, please read [Authentication](https://mslm.io/docs/api/authentication) to understand how to get an API key before continuing.
+
+For the Mslm Swift SDK, you can pass the API key via `MslmApiKey` in `info.plist` file.
+
 ## Installation
 
 See below for details about the installation method. Where
@@ -22,10 +28,6 @@ Instructions for [Swift Package Manager](https://swift.org/package-manager/) sup
 ## Usage
 
 Let's go through how to start using the Mslm Swift SDK with sample code.
-
-### Authentication
-
-The Mslm Swift SDK can be authenticated with your Mslm API access token, which is passed with this key `MslmApiKey` in `info.plist` file. See [Getting an API Key](https://mslm.io/docs/api/authentication/getting-an-api-key) for setting that up.
 
 ### Import the SDK
 
